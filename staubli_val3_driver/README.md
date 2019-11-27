@@ -2,21 +2,20 @@
 
 ## Overview
 
-This ROS-I driver was developed in Staubli's VAL3 language for use with 6-axis
+This ROS-I driver was developed in Staubli's VAL 3 language for use with 6-axis
 Staubli robot manipulators.
 
-It is advisable to try this driver on Staubli's emulator first.
+It is advisable to try this driver on Staubli's emulator in Staubli Robotics Suite (SRS) first.
 
 
 ## Requirements
 
 * Staubli 6-axis robot manipulator
-* Staubli CS8 controller
-  * it may work with other controllers, but this driver was tested on CS8 only
-* VAL3 version s7.7.2 or greater
+* Staubli CS8C/CS9 controller
+* VAL 3 version s7.7.2 or greater
   * this is very important, since this implementation uses return values of `sioGet()`
     only available from s7.7.2 onwards
-
+* Staubli Robotics Suite 2019 (not required but strongly reccomended)
 
 ## Installation
 
@@ -25,26 +24,28 @@ contents of the `val3` folder to the controller itself.
 
 ### Clone this repository
 
-Clone branch `indigo-devel` of [staubli_experimental](https://github.com/ros-industrial/staubli_experimental):
+Clone branch `kinetic-devel` of [staubli_experimental](https://github.com/ros-industrial/staubli_experimental):
 
 ```shell
-git clone https://github.com/ros-industrial/staubli_experimental -b indigo-devel
+git clone https://github.com/ros-industrial/staubli_experimental -b kinetic-devel
 ```
 
-### Transfer driver to Staubli CS8 controller
+### Transfer driver to Staubli controller
 
-There are several ways of transferring VAL3 applications to a Staubli controller.
-The simplest method is probably copying the contents of `val3` folder into
-a USB memory stick (<2GB given the CS8 limitations), plugging the stick to the
-controller and using the teach pendant to copy the folders.
+There are 2 ways of transferring VAL 3 applications to a Staubli controller:
 
-### Open the VAL3 application with Staubli SRS
+1. Copy the contents of `val3` folder onto a USB memory stick (<2GB given the CS8C limitations), 
+plugging the stick into the controller and using the teach pendant to copy the folders
+
+2. Use the Transfer Manager in SRS to copy the VAL 3 applications to the controller. (Home -> Controller -> Transfer Manager)
+
+### Open the VAL 3 application with Staubli SRS
 
 Although it is possible to edit the source files with any text editor (they are
-essentially XML files), it is advisable to use the Staubli Robotics Suite:
+essentially XML files), it is advisable to use Staubli Robotics Suite:
 
 * Copy contents of folder `val3` into the `usrapp` folder of the Staubli cell
-* Open the `ros_server` VAL3 project located inside the `ros_server` folder
+* Open the `ros_server` VAL 3 appplication located inside the `ros_server` folder
 
 SRS offers autocompletion, syntax highlighting and syntax checking, amongst other
 useful features, such as a Staubli controller/teach pendant emulator.
@@ -61,16 +62,29 @@ From `Main menu`:
 
 ### Configuration
 
-The TCP sockets on the CS8 controller/emulator must be configured prior to using
+The TCP sockets on the CS8C/CS9 controller/emulator must be configured prior to using
 the driver, otherwise a runtime error will be displayed on the teach pendant and
 the driver will not work.
 
-Two sockets (TCP Servers) are required. From `Main menu`:
+Two sockets (TCP Servers) are required.
+
+#### CS8C
+
+ From `Main menu`:
 
 1. Control panel --> I/O --> Socket --> TCP Servers
 2. Configure two sockets
-   * Name: Feedback, Port: 11002, Timeout: -1, Delimiter: 13, Nagle: Off
-   * Name: Motion, Port: 11000, Timeout: -1, Delimiter: 13, Nagle: Off
+   * Name: Feedback, Port: 11002, Timeout: -1, End of string: 13, Nagle: Off
+   * Name: Motion, Port: 11000, Timeout: -1, End of string: 13, Nagle: Off
+
+#### CS9
+
+ From `Home`:
+
+1. IO --> Socket --> TCP Servers --> "+"
+2. Configure two sockets
+   * Name: Feedback, Port: 11002, Timeout: -1, End of string: 13, Nagle: Off
+   * Name: Motion, Port: 11000, Timeout: -1, End of string: 13, Nagle: Off
 
 ### Run the driver (ROS-I server)
 
@@ -78,11 +92,17 @@ Check that:
 
 1. The contents of the `val3` folder (both `ros_server` and `ros_libs` folders)
 have been transferred to the Staubli controller
-2. The VAL3 application `ros_server` has been loaded
+2. The VAL 3 application `ros_server` has been loaded
 3. Both TCP Server sockets have been configured properly
 
-Then simply press the `Run` button, ensure that `ros_server` is highlighted,
+#### CS8C
+
+Press the `Run` button, ensure that `ros_server` is highlighted,
 then press `F8` (Ok).
+
+#### CS9
+
+VAL# --> Memory --> select `ros_server` --> ▶
 
 Notice that depending on which mode of operation is currently active, the motors
 may need to be enabled manually (a message will pop up on the screen). Likewise,
@@ -91,11 +111,11 @@ if in manual mode).
 
 ### Run the industrial_robot_client node (ROS-I client)
 
-The `indigo-devel` branch provides launch files (within the `staubli_val3_driver`
+The `kinetic-devel` branch provides launch files (within the `staubli_val3_driver`
 ROS package). Simply run:
 
 ```shell
-roslaunch staubli_val3_driver robot_interface_streaming.launch robot_ip:=<CS8 controller IP address>
+roslaunch staubli_val3_driver robot_interface_streaming.launch robot_ip:=<Controller IP address>
 ```
 
 ## Bugs, suggestions and feature requests
