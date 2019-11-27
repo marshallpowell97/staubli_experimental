@@ -4,11 +4,9 @@
     <Data name="bFbkOverrun" access="public" xsi:type="array" type="bool" size="1" />
     <Data name="bMotionOverrun" access="public" xsi:type="array" type="bool" size="1" />
     <Data name="siTcpIpFbk" access="public" xsi:type="array" type="sio" size="1">
-      <Value key="0" link="Socket\Feedback" />
+      <Value key="0" link="Serial\0" />
     </Data>
-    <Data name="siTcpIpMotion" access="public" xsi:type="array" type="sio" size="1">
-      <Value key="0" link="Socket\Motion" />
-    </Data>
+    <Data name="siTcpIpMotion" access="public" xsi:type="array" type="sio" size="1" />
     <Data name="sStreamTaskName" access="public" xsi:type="array" type="string" size="1">
       <Value key="0" value="publisher" />
     </Data>
@@ -32,7 +30,7 @@
       </Value>
     </Data>
     <Data name="tTool" access="public" xsi:type="array" type="tool" size="1">
-      <Value key="0" fatherId="flange[0]" ioLink="valve1" />
+      <Value key="0" fatherId="flange[0]" ioLink="ValveIO\valve1" />
     </Data>
     <Data name="sTrajPtTaskName" access="public" xsi:type="array" type="string" size="1" />
     <Data name="bTrajPtOverrun" access="public" xsi:type="array" type="bool" size="1" />
@@ -266,8 +264,6 @@
     <Data name="sScreenTaskName" access="public" xsi:type="array" type="string" size="1" />
     <Data name="nInConnFlag" access="public" xsi:type="array" type="num" size="1" />
     <Data name="nOutConnFlag" access="public" xsi:type="array" type="num" size="1" />
-    <Data name="scDebug" access="public" xsi:type="array" type="screen" size="1" />
-    <Data name="scMonitor" access="public" xsi:type="array" type="screen" size="1" />
     <Data name="sHtbtTaskName" access="public" xsi:type="array" type="string" size="1" />
     <Data name="nPtsPopped" access="public" xsi:type="array" type="num" size="1" />
     <Data name="bStopNow" access="public" xsi:type="array" type="bool" size="1" />

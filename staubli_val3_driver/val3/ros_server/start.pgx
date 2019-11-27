@@ -7,7 +7,7 @@
       <Local name="l_nTrajPeriod" type="num" xsi:type="array" size="1" />
       <Local name="l_nScreenUpdate" type="num" xsi:type="array" size="1" />
     </Locals>
-    <Code><![CDATA[begin 
+    <Code><![CDATA[begin
   // Copyright (c) 2016, Ocado Technology - Robotics Research Team
   //
   // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,6 @@
   // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   // See the License for the specific language governing permissions and
   // limitations under the License.
-
 
 
   // feedback task will run every 20ms (50Hz)
@@ -46,6 +45,13 @@
   sScreenTaskName = "screenTask"
   sHtbtTaskName = "htbtTask"
 
+  // Load interface library for CS8C or CS9
+  if(mid(getVersion("System"),1,1) == "7")
+    libInterface:libLoad("ros_libs/Interface/InterfaceCS8C")
+  elseIf(mid(getVersion("System"),1,1) == "8")
+    libInterface:libLoad("ros_libs/Interface/InterfaceCS9")
+  endIf
+
   // initialise TCP/IP parameters
   call initParams()
   // setup prefix and header of ROS messages
@@ -67,14 +73,14 @@
   clearBuffer(siTcpIpFbk)
   
   // check if robot is not in emergency stop and wait until estop is reset
-  if (esStatus() == 2)
+  if(esStatus() == 2)
     popUpMsg("Please reset E-Stop")
     wait(esStatus() < 2)
   endIf
   
   // before anything else, enable power (only works if robot is in remote mode)
-  if (!isPowered())
-    if (workingMode() >= 4)
+  if(!isPowered())
+    if(workingMode() >= 4)
       do
         enablePower()
         delay(2)
@@ -99,10 +105,12 @@
 
   // create synchronous task to update screen
   //taskCreateSync sScreenTaskName, l_nScreenUpdate, bScreenOverrun, screenUpdate()
-  taskCreate sScreenTaskName, 10, screenUpdate()
+  taskCreate sScreenTaskName, 10, libInterface:screenUpdate()
   
   // create asynchronous task to receive heartbeat on port 11002
   taskCreate sHtbtTaskName, 10, recvHeartbeat()
+
+  logMsg("ROS-I Server started")
 
 end]]></Code>
   </Program>

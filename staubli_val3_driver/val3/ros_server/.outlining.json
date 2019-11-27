@@ -1,0 +1,45 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "start",
+      "nodes": [
+        {
+          "start": 1330,
+          "end": 1546,
+          "isCollapsed": false
+        },
+        {
+          "start": 1434,
+          "end": 1538,
+          "isCollapsed": false
+        },
+        {
+          "start": 2108,
+          "end": 2196,
+          "isCollapsed": false
+        },
+        {
+          "start": 2282,
+          "end": 2473,
+          "isCollapsed": false
+        },
+        {
+          "start": 2303,
+          "end": 2465,
+          "isCollapsed": false
+        },
+        {
+          "start": 2332,
+          "end": 2397,
+          "isCollapsed": false
+        },
+        {
+          "start": 2402,
+          "end": 2455,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}
