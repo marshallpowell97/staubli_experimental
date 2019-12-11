@@ -1,0 +1,126 @@
+﻿{
+  "programs": [
+    {
+      "mode": 3,
+      "name": "start",
+      "nodes": [
+        {
+          "start": 1875,
+          "end": 1964,
+          "isCollapsed": false
+        },
+        {
+          "start": 2050,
+          "end": 2243,
+          "isCollapsed": false
+        },
+        {
+          "start": 2072,
+          "end": 2235,
+          "isCollapsed": false
+        },
+        {
+          "start": 2102,
+          "end": 2167,
+          "isCollapsed": false
+        },
+        {
+          "start": 2172,
+          "end": 2225,
+          "isCollapsed": false
+        }
+      ]
+    },
+    {
+      "mode": 3,
+      "name": "pushMotion",
+      "nodes": [
+        {
+          "start": 660,
+          "end": 2292,
+          "isCollapsed": false
+        },
+        {
+          "start": 701,
+          "end": 1380,
+          "isCollapsed": false
+        },
+        {
+          "start": 1385,
+          "end": 2258,
+          "isCollapsed": false
+        },
+        {
+          "start": 2263,
+          "end": 2280,
+          "isCollapsed": false
+        },
+        {
+          "start": 2401,
+          "end": 3711,
+          "isCollapsed": false
+        },
+        {
+          "start": 2486,
+          "end": 3703,
+          "isCollapsed": false
+        },
+        {
+          "start": 2585,
+          "end": 2853,
+          "isCollapsed": false
+        },
+        {
+          "start": 3066,
+          "end": 3228,
+          "isCollapsed": false
+        },
+        {
+          "start": 3194,
+          "end": 3218,
+          "isCollapsed": false
+        },
+        {
+          "start": 3238,
+          "end": 3703,
+          "isCollapsed": false
+        },
+        {
+          "start": 3387,
+          "end": 3693,
+          "isCollapsed": false
+        },
+        {
+          "start": 3434,
+          "end": 3681,
+          "isCollapsed": false
+        },
+        {
+          "start": 3481,
+          "end": 3549,
+          "isCollapsed": false
+        },
+        {
+          "start": 3560,
+          "end": 3629,
+          "isCollapsed": false
+        },
+        {
+          "start": 3640,
+          "end": 3663,
+          "isCollapsed": false
+        },
+        {
+          "start": 3752,
+          "end": 3970,
+          "isCollapsed": false
+        },
+        {
+          "start": 3857,
+          "end": 3962,
+          "isCollapsed": false
+        }
+      ]
+    }
+  ]
+}
