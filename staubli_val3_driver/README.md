@@ -11,7 +11,7 @@ It is advisable to try this driver on Staubli's emulator in Staubli Robotics Sui
 ## Requirements
 
 * Staubli 6-axis robot manipulator
-* Staubli CS8C/CS9 controller
+* Staubli CS8/CS9 controller
 * VAL 3 version s7.7.2 or greater
   * this is very important, since this implementation uses return values of `sioGet()`
     only available from s7.7.2 onwards
@@ -20,7 +20,7 @@ It is advisable to try this driver on Staubli's emulator in Staubli Robotics Sui
 ## Installation
 
 Installing the driver to a Staubli controller simply consists of transferring the
-contents of the `val3` folder to the controller itself.
+contents of the `val3_<controller name>` folder to the controller itself.
 
 ### Clone this repository
 
@@ -34,7 +34,7 @@ git clone https://github.com/ros-industrial/staubli_experimental -b kinetic-deve
 
 There are 2 ways of transferring VAL 3 applications to a Staubli controller:
 
-1. Copy the contents of `val3` folder onto a USB memory stick (<2GB given the CS8C limitations), 
+1. Copy the contents of `val3_<controller name>` folder onto a USB memory stick (<2GB given the CS8 limitations), 
 plugging the stick into the controller and using the teach pendant to copy the folders
 
 2. Use the Transfer Manager in SRS to copy the VAL 3 applications to the controller. (Home -> Controller -> Transfer Manager)
@@ -62,13 +62,13 @@ From `Main menu`:
 
 ### Configuration
 
-The TCP sockets on the CS8C/CS9 controller/emulator must be configured prior to using
+The TCP sockets on the CS8/CS9 controller/emulator must be configured prior to using
 the driver, otherwise a runtime error will be displayed on the teach pendant and
 the driver will not work.
 
 Two sockets (TCP Servers) are required.
 
-#### CS8C
+#### CS8
 
  From `Main menu`:
 
@@ -95,7 +95,7 @@ have been transferred to the Staubli controller
 2. The VAL 3 application `ros_server` has been loaded
 3. Both TCP Server sockets have been configured properly
 
-#### CS8C
+#### CS8
 
 Press the `Run` button, ensure that `ros_server` is highlighted,
 then press `F8` (Ok).
