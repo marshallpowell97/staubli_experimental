@@ -4,9 +4,11 @@
     <Data name="bFbkOverrun" access="public" xsi:type="array" type="bool" size="1" />
     <Data name="bMotionOverrun" access="public" xsi:type="array" type="bool" size="1" />
     <Data name="siTcpIpFbk" access="public" xsi:type="array" type="sio" size="1">
-      <Value key="0" link="Serial\0" />
+      <Value key="0" link="Socket\Feedback" />
     </Data>
-    <Data name="siTcpIpMotion" access="public" xsi:type="array" type="sio" size="1" />
+    <Data name="siTcpIpMotion" access="public" xsi:type="array" type="sio" size="1">
+      <Value key="0" link="Socket\Motion" />
+    </Data>
     <Data name="sStreamTaskName" access="public" xsi:type="array" type="string" size="1">
       <Value key="0" value="publisher" />
     </Data>
@@ -451,5 +453,6 @@
         </Field>
       </Value>
     </Data>
+    <Data name="nVel" access="private" xsi:type="array" type="num" size="2" />
   </Datas>
 </Database>

@@ -39,7 +39,6 @@
   </Database>
   <Libraries>
     <Library alias="libQueueFuncs" path="Disk://ros_libs/QueueFuncs/QueueFuncs.pjx" />
-    <Library alias="libInterface" path="Disk://ros_libs/Interface/InterfaceCS8C/InterfaceCS8C.pjx" autoload="false" />
   </Libraries>
   <Types>
     <Type name="RosSimpleMsg" path="Disk://ros_libs/RosSimpleMsg/RosSimpleMsg.pjx" />

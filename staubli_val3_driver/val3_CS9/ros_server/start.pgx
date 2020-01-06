@@ -45,12 +45,6 @@
   sScreenTaskName = "screenTask"
   sHtbtTaskName = "htbtTask"
 
-  // Load interface library for CS8C or CS9
-  if(mid(getVersion("System"),1,1) == "7")
-    libInterface:libLoad("ros_libs/Interface/InterfaceCS8C")
-  elseIf(mid(getVersion("System"),1,1) == "8")
-    libInterface:libLoad("ros_libs/Interface/InterfaceCS9")
-  endIf
 
   // initialise TCP/IP parameters
   call initParams()
@@ -105,7 +99,7 @@
 
   // create synchronous task to update screen
   //taskCreateSync sScreenTaskName, l_nScreenUpdate, bScreenOverrun, screenUpdate()
-  taskCreate sScreenTaskName, 10, libInterface:screenUpdate()
+  taskCreate sScreenTaskName, 10, screenUpdate()
   
   // create asynchronous task to receive heartbeat on port 11002
   taskCreate sHtbtTaskName, 10, recvHeartbeat()
