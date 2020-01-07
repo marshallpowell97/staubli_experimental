@@ -121,6 +121,42 @@
           "isCollapsed": false
         }
       ]
+    },
+    {
+      "mode": 3,
+      "name": "motionControl",
+      "nodes": [
+        {
+          "start": 676,
+          "end": 2664,
+          "isCollapsed": false
+        },
+        {
+          "start": 751,
+          "end": 2577,
+          "isCollapsed": false
+        },
+        {
+          "start": 948,
+          "end": 1186,
+          "isCollapsed": false
+        },
+        {
+          "start": 1038,
+          "end": 1174,
+          "isCollapsed": false
+        },
+        {
+          "start": 1411,
+          "end": 2278,
+          "isCollapsed": false
+        },
+        {
+          "start": 1497,
+          "end": 2266,
+          "isCollapsed": false
+        }
+      ]
     }
   ]
 }
