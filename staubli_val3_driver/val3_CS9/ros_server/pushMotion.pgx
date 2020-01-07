@@ -28,7 +28,7 @@
 
 
   switch rosGenericMsg.header.nMsgType
-    case 11
+    case nGenericMsgType["JOINT_TRAJ_PT"]
       l_mTrajPt.nSequence=rosTrajPtMsg.jointTrajPt.nSeq
 
       // ROS joint position values are in rad, but VAL3 uses degrees
@@ -43,7 +43,7 @@
       l_mTrajPt.nDuration=rosTrajPtMsg.jointTrajPt.nDuration
 
     break
-    case 14
+    case nGenericMsgType["JOINT_TRAJ_PT_FULL"]
       l_mTrajPt.nSequence=rosTrajPtFMsg.jointTrajPtFull.nSeq
       l_mTrajPt.nDuration=rosTrajPtFMsg.jointTrajPtFull.nTime
 
@@ -74,8 +74,8 @@
       // overwrite velocity (and acceleration - ?)
       l_mTrajPt.mDesc.vel = getMonitorSpeed()
       // explicitly setting accel and decel to VAL3 default values
-      l_mTrajPt.mDesc.accel = 100
-      l_mTrajPt.mDesc.decel = 100
+      l_mTrajPt.mDesc.accel = mNomSpeed.accel
+      l_mTrajPt.mDesc.decel = mNomSpeed.decel
     endIf
     // only push motion into buffer if not a STOP message
     // and if joint positions are within software joint limits
@@ -89,12 +89,12 @@
     if(l_bOk==false)
       // could not push trajectory point into buffer
       // thus ACK should flag FAILURE, but only if comm type is request
-      if(rosGenericMsg.header.nCommType==2)
+      if(rosGenericMsg.header.nCommType==nGenericMsgType["SERVICE_REQUEST"])
         switch rosGenericMsg.header.nMsgType
-          case 11
+          case nGenericMsgType["JOINT_TRAJ_PT"]
             rosTrajPtAck.header.nReplyCode=2
           break
-          case 14
+          case nGenericMsgType["JOINT_TRAJ_PT_FULL"]
             rosTrajPtFAck.header.nReplyCode=2
           break
           default
@@ -104,12 +104,12 @@
     endIf
   endIf
   // check whether ACK should be sent
-  if(rosGenericMsg.header.nCommType == 2)
+  if(rosGenericMsg.header.nCommType == nGenericMsgType["SERVICE_REQUEST"])
     // comm type request requires ACK
-    x_nMsgRecvState = 5
+    x_nMsgRecvState = nMsgState["Ack"]
   else
     // other comm types (e.g., topic) does not require ACK, hence skip state
-    x_nMsgRecvState = 0
+    x_nMsgRecvState = nMsgState["Reset"]
   endIf
 end]]></Code>
   </Program>
