@@ -157,6 +157,42 @@
           "isCollapsed": false
         }
       ]
+    },
+    {
+      "mode": 3,
+      "name": "decTrajPt",
+      "nodes": [
+        {
+          "start": 865,
+          "end": 918,
+          "isCollapsed": false
+        },
+        {
+          "start": 938,
+          "end": 1155,
+          "isCollapsed": false
+        },
+        {
+          "start": 1087,
+          "end": 1146,
+          "isCollapsed": false
+        },
+        {
+          "start": 1388,
+          "end": 1441,
+          "isCollapsed": false
+        },
+        {
+          "start": 1785,
+          "end": 1954,
+          "isCollapsed": false
+        },
+        {
+          "start": 2068,
+          "end": 2121,
+          "isCollapsed": false
+        }
+      ]
     }
   ]
 }
