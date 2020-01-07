@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: staubli_tx90_support
+    relative_path: urdf/tx90xl.xacro
+    xacro_args: "--inorder "
+  SRDF:
+    relative_path: config/staubli_tx90xl.srdf
+  CONFIG:
+    author_name: Marshall Powell
+    author_email: m.powell@staubli.com
+    generated_timestamp: 1578414198

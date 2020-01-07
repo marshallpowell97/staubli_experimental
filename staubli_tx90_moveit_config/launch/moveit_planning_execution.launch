@@ -11,14 +11,11 @@
  
   <!-- the "sim" argument controls whether we connect to a Simulated or Real robot -->
   <!--  - if sim=false, a robot_ip argument is required -->
-  <arg name="sim" default="false" />
-  <arg name="robot_ip" unless="$(arg sim)" default="10.13.82.17" />
+  <arg name="sim" default="true" />
+  <arg name="robot_ip" unless="$(arg sim)" />
 
-  <arg name="moveit_path" default="/home/ros-industrial/catkin_ws/src/staubli_experimental/staubli_tx90_moveit_config" />
-  <arg name="val3_path" default="/home/ros-industrial/catkin_ws/src/staubli_experimental/staubli_val3_driver" />
- 
   <!-- load the robot_description parameter before launching ROS-I nodes -->
-  <include file="$(arg moveit_path)/launch/planning_context.launch" >
+  <include file="$(find staubli_tx90_moveit_config)/launch/planning_context.launch" >
     <arg name="load_robot_description" value="true" />
   </include>
 
@@ -31,7 +28,7 @@
   <!--   - this typically includes: robot_state, motion_interface, and joint_trajectory_action nodes -->
   <!--   - replace these calls with appropriate robot-specific calls or launch files -->
   <group unless="$(arg sim)">
-    <include file="$(arg val3_path)/launch/robot_interface_streaming.launch" >
+    <include file="$(find staubli_val3_driver)/launch/robot_interface_streaming.launch" >
       <arg name="robot_ip" value="$(arg robot_ip)"/>
     </include>
   </group>
@@ -39,14 +36,14 @@
   <!-- publish the robot state (tf transforms) -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-  <include file="$(arg moveit_path)/launch/move_group.launch">
+  <include file="$(find staubli_tx90_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
   </include>
 
-  <include file="$(arg moveit_path)/launch/moveit_rviz.launch">
+  <include file="$(find staubli_tx90_moveit_config)/launch/moveit_rviz.launch">
     <arg name="config" value="true"/>
   </include>
   
-  <include file="$(arg moveit_path)/launch/default_warehouse_db.launch" />
+  <include file="$(find staubli_tx90_moveit_config)/launch/default_warehouse_db.launch" />
 
 </launch>
